@@ -3,7 +3,7 @@
 **
 ** This file is part of mkxp.
 **
-** Copyright (C) 2013 Jonas Kulla <Nyocurio@gmail.com>
+** Copyright (C) 2013 - 2021 Amaryllis Kulla <ancurio@mapleshrine.eu>
 **
 ** mkxp is free software: you can redistribute it and/or modify
 ** it under the terms of the GNU General Public License as published by
@@ -124,6 +124,9 @@ struct SharedStatePrivate
 			gl.ReleaseShaderCompiler();
 
 		std::string archPath = config.execName + gameArchExt();
+
+		for (size_t i = 0; i < config.patches.size(); ++i)
+			fileSystem.addPath(config.patches[i].c_str());
 
 		/* Check if a game archive exists */
 		FILE *tmp = fopen(archPath.c_str(), "rb");
